@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/screen/productscreen.dart';
-import 'package:mini_pos_system/screen/salesscreen.dart';
-import 'package:mini_pos_system/widget/bottomnavbar_widget.dart';
+import 'package:mini_pos_system/screen/small/productscreen.dart';
+import 'package:mini_pos_system/screen/small/salesscreen.dart';
+import 'package:mini_pos_system/screen/widget/bottomnavbar_widget.dart';
 import 'homescreen.dart';
 
 class Homescreen extends StatefulWidget {

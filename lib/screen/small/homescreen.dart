@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/widget/nameshop_widget.dart';
-import 'package:mini_pos_system/widget/recentsale_widget.dart';
-import 'package:mini_pos_system/widget/todaysale_widget.dart';
+import 'package:mini_pos_system/screen/widget/nameshop_widget.dart';
+import 'package:mini_pos_system/screen/widget/recentsale_widget.dart';
+import 'package:mini_pos_system/screen/widget/todaysale_widget.dart';
 import '../widget/card_widget.dart';
 
 class HomescreenWidget extends StatefulWidget {

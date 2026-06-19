@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/widget/searchbar_widget.dart';
+import 'package:mini_pos_system/screen/widget/searchbar_widget.dart';
 class Salesscreen extends StatefulWidget {
   const Salesscreen({super.key});
 

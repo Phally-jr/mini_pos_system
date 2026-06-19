@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/screen/fullscreen.dart';
+import 'package:mini_pos_system/screen/small/fullscreen.dart';
 
 // ignore: must_be_immutable
 class Welcomescreen extends StatefulWidget {
