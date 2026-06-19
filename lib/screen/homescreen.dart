@@ -5,12 +5,13 @@ import 'package:mini_pos_system/widget/todaysale_widget.dart';
 import '../widget/card_widget.dart';
 
 class HomescreenWidget extends StatefulWidget {
-     String  shopName="";
+  String shopName = "";
 
-     HomescreenWidget({super.key,required this.shopName});
+  HomescreenWidget({super.key, required this.shopName});
   @override
   State<HomescreenWidget> createState() => _HomescreenWidgetState();
 }
+
 class _HomescreenWidgetState extends State<HomescreenWidget> {
   int index = 0;
   @override
@@ -26,8 +27,11 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
           SizedBox(height: 15),
           RecentsaleWidget(),
           Expanded(child: CardWidget()),
+         
         ],
+      
       ),
+     
     );
   }
 }
