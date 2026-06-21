@@ -1,7 +1,16 @@
-import 'package:get_x/get.dart';
-class HomeController extends GetxController{
-    
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:mini_pos_system/screen/small/fullscreen.dart';
+import '../screen/responsive.dart';
+import '../screen/medium/homescreenmedium.dart';
+import '../screen/large/homescreenlarge.dart';
 
-
-
+class HomeController extends GetxController {
+  Widget build(BuildContext context) {
+    return Responsive(
+      small: Homescreen(shopName: "phally"),
+      medium: Homescreenmedium(),
+      large: Homescreenlarge(),
+    );
+  }
 }

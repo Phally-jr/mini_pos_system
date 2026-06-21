@@ -42,7 +42,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
               "You can't change the name after this.",
               style: TextStyle(color: Color(0xFFF1F5F0)),
             ),
-            SizedBox(height: 250),
+            SizedBox(height: 100),
             Row(
               children: [
                 SizedBox(width: 320),
