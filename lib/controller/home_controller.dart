@@ -6,11 +6,15 @@ import '../screen/medium/homescreenmedium.dart';
 import '../screen/large/homescreenlarge.dart';
 
 class HomeController extends GetxController {
-  Widget build(BuildContext context) {
-    return Responsive(
-      small: Homescreen(shopName: "phally"),
-      medium: Homescreenmedium(),
-      large: Homescreenlarge(),
-    );
+  Widget buildResponsive() => Responsive(
+    small:Homescreen(shopName:"phally",),
+    medium: Homescreenmedium(),
+    large: Homescreenlarge(),
+  );
+
+  @override
+  void onInit() {
+    super.onInit;
+    buildResponsive();
   }
 }
