@@ -7,7 +7,7 @@ import '../screen/large/homescreenlarge.dart';
 
 class HomeController extends GetxController {
   Widget buildResponsive() => Responsive(
-    small:Homescreen(shopName:"phally",),
+    small: Homescreen(shopName: "phally"),
     medium: Homescreenmedium(),
     large: Homescreenlarge(),
   );
