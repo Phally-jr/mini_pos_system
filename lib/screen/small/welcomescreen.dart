@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/screen/small/fullscreen.dart';
+import 'package:mini_pos_system/routes/app_routes.dart';
 
 // ignore: must_be_immutable
 class Welcomescreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _WelcomescreenState extends State<Welcomescreen> {
             SizedBox(height: 300),
             SizedBox(
               width: 280,
-              child: TextField(              
+              child: TextField(
                 controller: widget.controller,
                 decoration: InputDecoration(
                   labelText: "shop's name",
@@ -49,12 +49,10 @@ class _WelcomescreenState extends State<Welcomescreen> {
                 Expanded(
                   child: FloatingActionButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder:  (context) => Homescreen(shopName:widget.controller.text))
-                      );
-                    },backgroundColor: Colors.blue,
-                    child: Icon(Icons.arrow_forward_ios),                
+                      RouteView.fullScreen.go(clearAll: true);
+                    },
+                    backgroundColor: Colors.blue,
+                    child: Icon(Icons.arrow_forward_ios),
                   ),
                 ),
               ],
