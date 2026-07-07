@@ -9,16 +9,10 @@ import 'package:mini_pos_system/screen/small/productscreen.dart';
 import 'package:mini_pos_system/screen/small/salesscreen.dart';
 import '../widget/card_widget.dart';
 
-class HomescreenWidget extends StatefulWidget {
+class HomescreenWidget extends GetView<HomeController> {
   String shopName = "";
 
   HomescreenWidget({super.key, required this.shopName});
-  @override
-  State<HomescreenWidget> createState() => _HomescreenWidgetState();
-}
-
-class _HomescreenWidgetState extends State<HomescreenWidget> {
-  final HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +39,7 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
         return Column(
           children: [
             SizedBox(height: 80),
-            NameshopWidget(shopName: widget.shopName),
+            NameshopWidget(shopName: shopName),
             SizedBox(height: 15),
             TodaysaleWidget(),
             SizedBox(height: 15),
@@ -63,7 +57,7 @@ class _HomescreenWidgetState extends State<HomescreenWidget> {
         return Column(
           children: [
             SizedBox(height: 80),
-            NameshopWidget(shopName: widget.shopName),
+            NameshopWidget(shopName: shopName),
             SizedBox(height: 15),
             TodaysaleWidget(),
             SizedBox(height: 15),

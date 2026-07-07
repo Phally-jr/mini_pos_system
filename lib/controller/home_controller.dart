@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import '../model/product_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:mini_pos_system/service/api_service.dart';
 
 class HomeController extends GetxController {
   // Observable state
@@ -8,24 +11,20 @@ class HomeController extends GetxController {
   final products = <String>[].obs;
   final selectedTabIndex = 0.obs;
 
+  late final String apiUrl;
   @override
   void onInit() {
     super.onInit();
-    fetchProducts();
+    
   }
 
-  void incrementSales(int amount) => totalSales.value += amount;
+  
 
+  void incrementSales(int amount) => totalSales.value += amount;
   void selectTab(int value) {
     selectedTabIndex.value = value;
   }
 
-  Future<void> fetchProducts() async {
-    isLoading.value = true;
-    await Future.delayed(const Duration(milliseconds: 500));
-    products.assignAll(['Apple', 'Banana', 'Orange']);
-    isLoading.value = false;
-  }
 
   void addProduct(String name) {
     products.add(name);

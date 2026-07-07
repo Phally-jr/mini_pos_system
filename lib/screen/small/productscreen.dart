@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mini_pos_system/routes/app_routes.dart';
-
+import 'package:get/get.dart';
+import 'package:mini_pos_system/controller/home_controller.dart';
 import '../widget/searchbar_widget.dart';
 
-class Productscreen extends StatefulWidget {
+class Productscreen extends GetView<HomeController> {
   const Productscreen({super.key});
 
-  @override
-  State<Productscreen> createState() => _ProductscreenState();
-}
-
-class _ProductscreenState extends State<Productscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
