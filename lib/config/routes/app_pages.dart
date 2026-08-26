@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mini_pos_system/routes/app_routes.dart';
+import 'package:mini_pos_system/config/routes/app_routes.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
 import 'package:mini_pos_system/screen/small/homescreen.dart';
 import 'package:mini_pos_system/screen/small/productscreen.dart';

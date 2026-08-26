@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/routes/app_routes.dart';
+import 'package:mini_pos_system/config/routes/app_routes.dart';
 
 // ignore: must_be_immutable
 class Welcomescreen extends StatefulWidget {

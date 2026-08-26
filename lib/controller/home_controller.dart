@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import '../model/product_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:mini_pos_system/service/api_service.dart';
+import 'package:mini_pos_system/config/service/api_service.dart';
 
 class HomeController extends GetxController {
   // Observable state
-  final title = 'Mini POS'.obs;
+  final title = 'Mini POPS'.obs;
   final totalSales = 0.obs;
   final isLoading = false.obs;
   final products = <String>[].obs;

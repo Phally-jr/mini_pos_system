@@ -9,9 +9,9 @@ import 'package:mini_pos_system/screen/small/productscreen.dart';
 import 'package:mini_pos_system/screen/small/salesscreen.dart';
 import '../widget/card_widget.dart';
 
-class HomescreenWidget extends GetView<HomeController> {
+class HomescreenWidget extends StatelessWidget {
   String shopName = "";
-
+  var controller = Get.put(HomeController());
   HomescreenWidget({super.key, required this.shopName});
 
   @override
