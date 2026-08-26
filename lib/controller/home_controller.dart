@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import '../model/product_model.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:mini_pos_system/config/service/api_service.dart';
 
 class HomeController extends GetxController {
   // Observable state
@@ -12,11 +9,6 @@ class HomeController extends GetxController {
   final selectedTabIndex = 0.obs;
 
   late final String apiUrl;
-  @override
-  void onInit() {
-    super.onInit();
-    
-  }
 
   
 

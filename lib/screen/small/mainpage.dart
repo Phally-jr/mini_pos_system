@@ -4,15 +4,15 @@ import 'package:mini_pos_system/screen/small/salesscreen.dart';
 import 'package:mini_pos_system/screen/widget/bottomnavbar_widget.dart';
 import 'homescreen.dart';
 
-class Homescreen extends StatefulWidget {
+class MainPage extends StatefulWidget {
   String shopName = "";
 
-  Homescreen({super.key, required this.shopName});
+  MainPage({super.key, required this.shopName});
   @override
-  State<Homescreen> createState() => _HomescreenState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _HomescreenState extends State<Homescreen> {
+class _MainPageState extends State<MainPage> {
   int index = 0;
   void onTap() {}
   @override

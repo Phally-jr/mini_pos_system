@@ -21,5 +21,5 @@ class Responsive extends GetResponsiveView<HomeController> {
   @override
   Widget? desktop() {
     return large ?? Homescreenlarge();
-  }
+  }                
 }

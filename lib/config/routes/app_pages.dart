@@ -4,7 +4,7 @@ import 'package:mini_pos_system/screen/responsive.dart';
 import 'package:mini_pos_system/screen/small/homescreen.dart';
 import 'package:mini_pos_system/screen/small/productscreen.dart';
 import 'package:mini_pos_system/screen/small/salesscreen.dart';
-import 'package:mini_pos_system/screen/small/fullscreen.dart';
+import 'package:mini_pos_system/screen/small/mainpage.dart';
 import 'package:mini_pos_system/screen/small/welcomescreen.dart';
 import 'package:mini_pos_system/screen/small/product_detailscreen.dart';
 

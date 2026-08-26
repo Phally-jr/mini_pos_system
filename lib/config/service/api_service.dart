@@ -137,7 +137,7 @@ class ApiService {
     }
   }
 
-  _extractErrorData(http.Response response) {
+  dynamic _extractErrorData(http.Response response) {
     try {
       final Map<String, dynamic> data = jsonDecode(response.body);
       if (data.containsKey('data')) {
