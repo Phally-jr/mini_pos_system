@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mini_pos_system/config/routes/app_pages.dart';
-import 'package:mini_pos_system/config/routes/app_routes.dart';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      home:  Responsive(),
-      initialRoute: RouteView.fullScreen.name,
+      
+      home: Responsive(),
       getPages: AppRouting.route,
     );
   }

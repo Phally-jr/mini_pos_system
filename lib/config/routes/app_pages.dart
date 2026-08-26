@@ -35,7 +35,7 @@ class AppRouting {
       case RouteView.fullScreen:
         return GetPage(
           name: "/${e.name}",
-          page: () => Homescreen(shopName: "hello"),
+          page: () => MainPage(shopName: "hello"),
         );
     }
   }).toList();
