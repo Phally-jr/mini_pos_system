@@ -12,7 +12,6 @@ class Responsive extends GetResponsiveView<HomeController> {
   Widget? phone() {
     return small ?? MainPage(shopName:"hello");
   }
-
   @override
   Widget? tablet() {
     return medium ?? Homescreenmedium();
