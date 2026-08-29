@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 
 extension ListSpaceBetweenExtension on List<Widget> {
   List<Widget> withSpaceBetween({double? width, double? height}) => [
@@ -89,8 +90,8 @@ void notificationAlert(String message) {
     //backgroundColor: AppColors.redColor,
     icon: Container(
       alignment: Alignment.topRight,
-      height: 18,
-      width: 68,
+      height: Responsive.h(2.2), // previously 18
+      width: Responsive.w(17), // previously 68
       child: const Icon(
         Icons.error_outline_rounded,
         color: Colors.white,

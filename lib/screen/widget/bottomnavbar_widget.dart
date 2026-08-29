@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 
 class BottomnavbarWidget extends StatefulWidget {
   // ignore: strict_top_level_inference, prefer_typing_uninitialized_variables
@@ -20,11 +21,11 @@ class _BottomnavbarWidgetState extends State<BottomnavbarWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: Responsive.h(10), // previously 80
       child: Stack(
         children: [
           Container(
-            height: 80,
+            height: Responsive.h(10), // previously 80
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.indigo,
@@ -33,7 +34,7 @@ class _BottomnavbarWidgetState extends State<BottomnavbarWidget> {
           ),
           Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: Responsive.h(2.5)), // previously 20
               Row(
                 children: List.generate(
                   logo.length,

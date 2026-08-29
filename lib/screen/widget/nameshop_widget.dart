@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 
 class NameshopWidget extends StatelessWidget {
   final String? shopName;
@@ -9,7 +10,7 @@ class NameshopWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Container(
         width: double.infinity,
-        height: 50,
+        height: Responsive.h(6), // previously 50
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: const Color.fromARGB(255, 255, 255, 255),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_pos_system/config/routes/app_routes.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 
 // ignore: must_be_immutable
 class Welcomescreen extends StatefulWidget {
@@ -23,9 +24,9 @@ class _WelcomescreenState extends State<Welcomescreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 300),
+            SizedBox(height: Responsive.h(35)), // previously 300
             SizedBox(
-              width: 280,
+              width: Responsive.w(70), // previously 280
               child: TextField(
                 controller: widget.controller,
                 decoration: InputDecoration(
@@ -42,10 +43,10 @@ class _WelcomescreenState extends State<Welcomescreen> {
               "You can't change the name after this.",
               style: TextStyle(color: Color(0xFFF1F5F0)),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: Responsive.h(10)), // previously 100
             Row(
               children: [
-                SizedBox(width: 320),
+                SizedBox(width: Responsive.w(75)), // previously 320
                 Expanded(
                   child: FloatingActionButton(
                     onPressed: () {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 
 class SearchbarWidget extends StatefulWidget {
   const SearchbarWidget({super.key});
@@ -10,7 +11,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: Responsive.h(6), // previously 50
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),

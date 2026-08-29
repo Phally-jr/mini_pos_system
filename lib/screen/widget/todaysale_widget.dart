@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 class TodaysaleWidget extends StatelessWidget {
   const TodaysaleWidget({super.key});
 
@@ -20,7 +21,7 @@ class TodaysaleWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                height: 200,
+                height: Responsive.h(25), // previously 200
                 child: Column(
 
                   mainAxisAlignment: MainAxisAlignment.start,

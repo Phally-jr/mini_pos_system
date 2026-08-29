@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_pos_system/screen/responsive.dart';
 
 class RecentsaleWidget extends StatelessWidget {
   const RecentsaleWidget({super.key});
@@ -21,7 +22,7 @@ class RecentsaleWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           color: const Color.fromARGB(255, 255, 250, 250),
         ),
-        height: 200,
+        height: Responsive.h(25), // previously 200
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
