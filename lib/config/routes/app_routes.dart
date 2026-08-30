@@ -11,6 +11,8 @@ enum RouteView {
   salesscreen,
   welcome,
   productDetailscreen,
+  loginScreen,
+  signupscreen,
 }
 
 extension AppPages on RouteView {

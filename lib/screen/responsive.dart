@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mini_pos_system/controller/home_controller.dart';
 import 'package:mini_pos_system/screen/large/homescreenlarge.dart';
 import 'package:mini_pos_system/screen/medium/homescreenmedium.dart';
-import 'package:mini_pos_system/screen/small/mainpage.dart';
+import 'package:mini_pos_system/screen/small/auth/loginscreen.dart';
 
 class Responsive extends GetResponsiveView<HomeController> {
   Widget? small, medium, large;
@@ -14,15 +14,16 @@ class Responsive extends GetResponsiveView<HomeController> {
   static double h(double percentage) => Get.height * (percentage / 100);
   @override
   Widget? phone() {
-    return small ?? MainPage(shopName:"hello");
+    return LoginScreen();
   }
+
   @override
   Widget? tablet() {
-    return medium ?? Homescreenmedium();
+    return Homescreenmedium();
   }
 
   @override
   Widget? desktop() {
-    return large ?? Homescreenlarge();
-  }                
+    return Homescreenlarge();
+  }
 }

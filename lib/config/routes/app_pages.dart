@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:mini_pos_system/config/routes/app_routes.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
+import 'package:mini_pos_system/screen/small/auth/loginscreen.dart';
+import 'package:mini_pos_system/screen/small/auth/signupscreen.dart';
 import 'package:mini_pos_system/screen/small/homescreen.dart';
 import 'package:mini_pos_system/screen/small/productscreen.dart';
 import 'package:mini_pos_system/screen/small/salesscreen.dart';
@@ -8,10 +10,19 @@ import 'package:mini_pos_system/screen/small/mainpage.dart';
 import 'package:mini_pos_system/screen/small/welcomescreen.dart';
 import 'package:mini_pos_system/screen/small/product_detailscreen.dart';
 
+
 class AppRouting {
   String shopname = "";
   static final route = RouteView.values.map((e) {
     switch (e) {
+      case RouteView.signupscreen:
+        {
+          return GetPage(name: "/${e.name}", page: () => Signupscreen());
+        }
+      case RouteView.loginScreen:
+        {
+          return GetPage(name: "/${e.name}", page: () => LoginScreen());
+        }
       case RouteView.productDetailscreen:
         {
           return GetPage(name: "/${e.name}", page: () => ProductDetailscreen());
