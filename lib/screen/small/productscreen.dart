@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/config/routes/app_routes.dart';
+import 'package:mini_pos_system/config/routes/app_route.dart';
 import 'package:get/get.dart';
 import 'package:mini_pos_system/controller/home_controller.dart';
 import '../widget/searchbar_widget.dart';
@@ -127,7 +127,7 @@ class Productscreen extends GetView<HomeController> {
                       ],
                     ),
                   ),
-                  onTap: () => RouteView.productDetailscreen.go(),
+                  onTap: () => AppRoute.productScreen
                 ),
               ),
             ),

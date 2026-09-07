@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:mini_pos_system/config/routes/app_pages.dart';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:get/get.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
+import 'package:mini_pos_system/config/routes/app_route.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
-  await dotenv.load();
-  await Supabase.initialize(
-    url: dotenv.env['SUPABASE_URL']!,
-    // ignore: deprecated_member_use
-    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
-  );
+  
+  WidgetsFlutterBinding.ensureInitialized();
+    await dotenv.load();
+    final prefs = await SharedPreferences.getInstance();
+    Get.put<SharedPreferences>(prefs);
+    await Supabase.initialize(
+      url: dotenv.env['SUPABASE_URL']!,
+      // ignore: deprecated_member_use
+      anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+    );
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -21,9 +28,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      
       home: Responsive(),
-      getPages: AppRouting.route,
+      getPages: AppRoute.route,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

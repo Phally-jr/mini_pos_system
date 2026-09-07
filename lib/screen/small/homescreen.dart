@@ -7,9 +7,8 @@ import 'package:mini_pos_system/screen/widget/todaysale_widget.dart';
 import '../widget/card_widget.dart';
 
 class HomescreenWidget extends StatelessWidget {
-  String shopName = "";
   var controller = Get.put(HomeController());
-  HomescreenWidget({super.key, required this.shopName});
+  HomescreenWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +20,7 @@ class HomescreenWidget extends StatelessWidget {
   Widget _buildBody() {return Column(
           children: [
             SizedBox(height: 80),
-            Expanded(child: NameshopWidget(shopName: shopName)),
+            Expanded(child: NameshopWidget()),
             SizedBox(height: 15),
             TodaysaleWidget(),
             SizedBox(height: 15),

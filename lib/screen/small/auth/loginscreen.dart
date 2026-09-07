@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mini_pos_system/config/routes/app_routes.dart';
+import 'package:mini_pos_system/config/routes/app_route.dart';
 import 'package:mini_pos_system/controller/auth_controller.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
 
@@ -8,6 +8,8 @@ class LoginScreen extends GetView<AuthscreenController> {
   LoginScreen({super.key});
   final _formKey = GlobalKey<FormState>();
   Widget space = SizedBox(height: Responsive.h(5));
+  String email=TextEditingController().text;
+  String password=TextEditingController().text;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,7 @@ class LoginScreen extends GetView<AuthscreenController> {
           height: Responsive.h(75),
           width: Responsive.w(100),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.blue.withAlpha(125),
             borderRadius: BorderRadius.circular(50),
           ),
           child: Column(
@@ -35,17 +37,18 @@ class LoginScreen extends GetView<AuthscreenController> {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white70,
+                  color: Colors.white,
                 ),
               ),
-              space,
+
               SizedBox(
                 width: double.infinity,
                 child: Text(
-                  "       please login to your account",
+                  "                        please login to your account",
                   style: TextStyle(fontSize: 16, color: Colors.white60),
                 ),
               ),
+              space,
 
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -54,6 +57,7 @@ class LoginScreen extends GetView<AuthscreenController> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller:TextEditingController(text: email),
                         decoration: InputDecoration(
                           labelText: "Email",
                           border: OutlineInputBorder(
@@ -75,6 +79,7 @@ class LoginScreen extends GetView<AuthscreenController> {
                       ),
                       space,
                       TextFormField(
+                        controller:TextEditingController(text: password),
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: "password",
@@ -98,7 +103,7 @@ class LoginScreen extends GetView<AuthscreenController> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // Process the login
+                              controller.login(email, password);
                             }
                           },
                           child: Text("Login"),
@@ -110,12 +115,9 @@ class LoginScreen extends GetView<AuthscreenController> {
                         children: [
                           SizedBox(width: Responsive.w(20)),
                           Text("Don't have account?"),
-                          TextButton(
-                            onPressed: () {
-                              RouteView.signupscreen.go() ;
-                            },
-                            child: Text("Register"),
-                          ),
+                          TextButton(onPressed: () {
+                            Get.toNamed(AppRoute.signup);
+                          }, child: Text("Register")),
                         ],
                       ),
                     ],

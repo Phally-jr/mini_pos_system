@@ -2,25 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:mini_pos_system/screen/small/productscreen.dart';
 import 'package:mini_pos_system/screen/small/salesscreen.dart';
 import 'package:mini_pos_system/screen/widget/bottomnavbar_widget.dart';
-import 'homescreen.dart';
-
+import 'package:mini_pos_system/screen/small/homescreen.dart';
 class MainPage extends StatefulWidget {
-  String shopName = "";
-
-  MainPage({super.key, required this.shopName});
+  const MainPage({super.key});
   @override
   State<MainPage> createState() => _MainPageState();
 }
-
 class _MainPageState extends State<MainPage> {
   int index = 0;
   void onTap() {}
   @override
   Widget build(BuildContext context) {
     List pages = [
-      HomescreenWidget(shopName: widget.shopName),
-      Salesscreen(),
+      HomescreenWidget(),
       Productscreen(),
+      Salesscreen(),
+      
     ];
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 253, 252, 252),
