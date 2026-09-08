@@ -10,7 +10,7 @@ class Signupscreen extends GetView<AuthscreenController> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   @override
-  final AuthscreenController controller = Get.put(AuthscreenController());
+  final  controller = Get.put(AuthscreenController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: _buildBoy());

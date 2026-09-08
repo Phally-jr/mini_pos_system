@@ -16,7 +16,7 @@ class AppRoute {
   static const mainpage = '/mainpage';
   static const productScreen = '/productScreen';
   static const productDetailScreen = '/ProductDetailscreen';
-  static const saleScreen='/saleScreen';
+  static const saleScreen = '/saleScreen';
 
   static final route = [
     GetPage(name: init, page: () => Responsive()),
@@ -24,7 +24,6 @@ class AppRoute {
     GetPage(name: loginScreen, page: () => LoginScreen()),
     GetPage(name: signup, page: () => Signupscreen()),
     GetPage(name: homescreen, page: () => HomescreenWidget()),
-    GetPage(name: mainpage,page: () => MainPage(),
-    ),
+    GetPage(name: mainpage, page: () => MainPage()),
   ];
 }

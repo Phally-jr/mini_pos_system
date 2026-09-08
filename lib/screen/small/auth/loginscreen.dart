@@ -6,10 +6,11 @@ import 'package:mini_pos_system/screen/responsive.dart';
 
 class LoginScreen extends GetView<AuthscreenController> {
   LoginScreen({super.key});
+  final  controller = Get.put(AuthscreenController());
   final _formKey = GlobalKey<FormState>();
   Widget space = SizedBox(height: Responsive.h(5));
-  String email=TextEditingController().text;
-  String password=TextEditingController().text;
+  TextEditingController email=TextEditingController();
+  TextEditingController password=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +58,7 @@ class LoginScreen extends GetView<AuthscreenController> {
                   child: Column(
                     children: [
                       TextFormField(
-                        controller:TextEditingController(text: email),
+                        controller: email,
                         decoration: InputDecoration(
                           labelText: "Email",
                           border: OutlineInputBorder(
@@ -79,7 +80,7 @@ class LoginScreen extends GetView<AuthscreenController> {
                       ),
                       space,
                       TextFormField(
-                        controller:TextEditingController(text: password),
+                        controller: password,
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: "password",
@@ -103,10 +104,14 @@ class LoginScreen extends GetView<AuthscreenController> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              controller.login(email, password);
+                              controller.login(email.text, password.text);
                             }
                           },
-                          child: Text("Login"),
+                          child: controller.isLoading.value
+                              ? const CircularProgressIndicator(
+                                  color: Colors.black,
+                                )
+                              : const Text("Login"),
                         ),
                       ),
                       space,
