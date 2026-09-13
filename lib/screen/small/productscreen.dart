@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mini_pos_system/config/routes/app_route.dart';
 import 'package:get/get.dart';
-import 'package:mini_pos_system/controller/home_controller.dart';
+import 'package:mini_pos_system/config/routes/app_route.dart';
+import 'package:mini_pos_system/controller/product_controller.dart';
+import 'package:mini_pos_system/model/product_model.dart';
+import 'package:mini_pos_system/screen/small/addproductscreen.dart';
+import 'package:mini_pos_system/screen/small/editproductscreen.dart';
 import '../widget/searchbar_widget.dart';
 
-class Productscreen extends GetView<HomeController> {
-  const Productscreen({super.key});
+class Productscreen extends StatelessWidget {
+  final controller = Get.put(ProductController());
 
+  Productscreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,9 +18,9 @@ class Productscreen extends GetView<HomeController> {
         title: Text("Product Management"),
         actions: [
           InkWell(
-            child: Icon(Icons.add),
+            child: Icon(Icons.add, size: 30),
             onTap: () => {
-              Container(), //dak screen
+              Get.toNamed(AppRoute.addProduct), //dak screen
             },
           ),
         ],
@@ -31,108 +35,76 @@ class Productscreen extends GetView<HomeController> {
             SearchbarWidget(),
             const SizedBox(height: 10),
             Expanded(
-              child: ListView.builder(
-                itemCount: 15,
-                itemBuilder: (context, index) => InkWell(
-                  child: Container(
-                    width: double.infinity,
-                    height: 130,
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 246, 247, 247),
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromARGB(255, 110, 108, 108),
-                          blurRadius: 5,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 130,
-                          height: 130,
-                          decoration: const BoxDecoration(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              bottomLeft: Radius.circular(15),
-                            ),
-                          ),
-                          child: const Icon(Icons.image, size: 50),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  "Product Name",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                SizedBox(height: 5),
-                                Text("Stock"),
-                                SizedBox(height: 5),
-                                Text("Price: \$100",style: TextStyle(color: Colors.blue),),
-                              ],
-                            ),
-                          ),
-                        ),
-                          Column(
-                            children: [
-                               IconButton(
-                                icon: const Icon(Icons.edit),
-                                onPressed: () {
-                                  // Handle edit action
-                                },
-                                style: ButtonStyle(
-                                  foregroundColor: WidgetStateProperty.all<Color>(Colors.blue),
-                                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.delete),
-                                onPressed: () {
-                                  // Handle delete action
-                                },
-                                style: ButtonStyle(
-                                  foregroundColor: WidgetStateProperty.all<Color>(const Color.fromARGB(255, 204, 8, 8)),
-                                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              
+              child: Obx(() {
+                if (controller.isLoading.value) {
+                  return const Center(child: CircularProgressIndicator());
+                }
 
-                            ],
-                           
-                          ),
-                          
-                        
-                        
-                      ],
-                    ),
-                  ),
-                  onTap: () => AppRoute.productScreen
-                ),
-              ),
+                return ListView.builder(
+                  itemCount: controller.products.length,
+                  itemBuilder: (_, index) {
+                    final p = controller.products[index];
+
+                    return Card(
+                      child: ListTile(
+                        title: Text(p.pName),
+                        subtitle: Text("Stock: ${p.pQty}"),
+
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text("\$${p.pPrice}"),
+
+                            const SizedBox(width: 10),
+
+                            // Edit
+                            IconButton(
+                              onPressed: () {
+                                Get.to(() => EditProductScreen(product: p));
+                              },
+                              icon: const Icon(Icons.edit),
+                            ),
+
+                            // Delete
+                            IconButton(
+                              onPressed: () {
+                                  Get.dialog(
+                                    AlertDialog(
+                                      title: const Text('Delete Product',),
+                                      content: const Text(
+                                        'Are you sure to delete this product?',
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Get.back(); // Cancel
+                                          },
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () async {
+                                            Get.back(); // Close dialog
+
+                                            await controller.deleteProduct(p.pid);
+                                          },
+                                          child: const Text('Delete',style: TextStyle(color: Colors.red),),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                      },
+                                  icon: const Icon(Icons.delete,color:Colors.red,),
+                                ),  
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              }),
             ),
             const SizedBox(height: 10),
-            const Text("n products"),
+            Text("${controller.products.length} product")
           ],
         ),
       ),

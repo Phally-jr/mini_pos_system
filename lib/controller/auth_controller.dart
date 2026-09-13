@@ -26,7 +26,7 @@ class AuthscreenController extends GetxController {
         "Success",
         "Login successful",
       );
-
+      
       Get.offAndToNamed(AppRoute.mainpage);
     }
   } catch (e) {

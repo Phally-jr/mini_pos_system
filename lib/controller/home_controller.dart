@@ -1,26 +1,32 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
-  // Observable state
-  final title = 'Mini POPS'.obs;
-  final totalSales = 0.obs;
-  final isLoading = false.obs;
-  final products = <String>[].obs;
-  final selectedTabIndex = 0.obs;
+  final prefs = Get.find<SharedPreferences>();
 
-  late final String apiUrl;
+  var name = "".obs;
 
-  
-
-  void incrementSales(int amount) => totalSales.value += amount;
-  void selectTab(int value) {
-    selectedTabIndex.value = value;
+  @override
+  void onInit() {
+    super.onInit();
+    getName();
   }
 
-
-  void addProduct(String name) {
-    products.add(name);
+  void getName() {
+    name.value = prefs.getString("name") ?? "";
   }
 
-  void clearProducts() => products.clear();
+  void saveName(String newName) {
+    prefs.setString("name", newName);
+
+    name.value = newName; // refresh UI
+
+    Get.back();
+
+    Get.snackbar(
+      "Success",
+      "Name is changed",
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 }

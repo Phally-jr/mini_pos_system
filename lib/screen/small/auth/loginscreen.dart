@@ -5,12 +5,13 @@ import 'package:mini_pos_system/controller/auth_controller.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
 
 class LoginScreen extends GetView<AuthscreenController> {
-  LoginScreen({super.key});
-  final  controller = Get.put(AuthscreenController());
+  LoginScreen({super.key}) {
+    Get.put(AuthscreenController());
+  }
   final _formKey = GlobalKey<FormState>();
   Widget space = SizedBox(height: Responsive.h(5));
-  TextEditingController email=TextEditingController();
-  TextEditingController password=TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,113 +24,121 @@ class LoginScreen extends GetView<AuthscreenController> {
     return Column(
       children: [
         SizedBox(height: Responsive.h(20)),
-        Container(
-          height: Responsive.h(75),
-          width: Responsive.w(100),
-          decoration: BoxDecoration(
-            color: Colors.blue.withAlpha(125),
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Column(
-            children: [
-              space,
-              Text(
-                "Welcome back!",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+          child: Container(
+            height: Responsive.h(75),
 
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                  "                        please login to your account",
-                  style: TextStyle(fontSize: 16, color: Colors.white60),
-                ),
-              ),
-              space,
-
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        controller: email,
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-                          final emailRegex = RegExp(
-                            r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                          );
-                          if (!emailRegex.hasMatch(value)) {
-                            return 'Please enter a valid email address';
-                          }
-                          return null;
-                        },
-                      ),
-                      space,
-                      TextFormField(
-                        controller: password,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          labelText: "password",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          if (value.length < 6) {
-                            return 'Password must be at least 6 characters long';
-                          }
-                          return null;
-                        },
-                      ),
-                      space,
-                      SizedBox(
-                        width: Responsive.w(40),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              controller.login(email.text, password.text);
-                            }
-                          },
-                          child: controller.isLoading.value
-                              ? const CircularProgressIndicator(
-                                  color: Colors.black,
-                                )
-                              : const Text("Login"),
-                        ),
-                      ),
-                      space,
-                      space,
-                      Row(
-                        children: [
-                          SizedBox(width: Responsive.w(20)),
-                          Text("Don't have account?"),
-                          TextButton(onPressed: () {
-                            Get.toNamed(AppRoute.signup);
-                          }, child: Text("Register")),
-                        ],
-                      ),
-                    ],
+            decoration: BoxDecoration(
+              color: Colors.blue.withAlpha(125),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Column(
+              children: [
+                space,
+                Text(
+                  "Welcome back!",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
-              ),
-            ],
+
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    "                        please login to your account",
+                    style: TextStyle(fontSize: 16, color: Colors.white60),
+                  ),
+                ),
+                space,
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: email,
+                          decoration: InputDecoration(
+                            labelText: "Email",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your email';
+                            }
+                            final emailRegex = RegExp(
+                              r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                            );
+                            if (!emailRegex.hasMatch(value)) {
+                              return 'Please enter a valid email address';
+                            }
+                            return null;
+                          },
+                        ),
+                        space,
+                        TextFormField(
+                          controller: password,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: "password",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your password';
+                            }
+                            if (value.length < 6) {
+                              return 'Password must be at least 6 characters long';
+                            }
+                            return null;
+                          },
+                        ),
+                        space,
+                        SizedBox(
+                          width: Responsive.w(40),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                controller.login(email.text, password.text);
+                              }
+                            },
+                            child: controller.isLoading.value
+                                ? const CircularProgressIndicator(
+                                    color: Colors.black,
+                                  )
+                                : const Text("Login"),
+                          ),
+                        ),
+                        space,
+                        space,
+                        SingleChildScrollView(
+                          child: Row(
+                            children: [
+                              SizedBox(width: Responsive.w(20)),
+                              Text("Don't have account?"),
+                              TextButton(
+                                onPressed: () {
+                                  Get.toNamed(AppRoute.signup);
+                                },
+                                child: Text("Register"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

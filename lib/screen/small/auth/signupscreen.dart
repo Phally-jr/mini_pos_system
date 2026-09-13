@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mini_pos_system/screen/responsive.dart';
 import 'package:mini_pos_system/controller/auth_controller.dart';
+
 class Signupscreen extends GetView<AuthscreenController> {
-  Signupscreen({super.key});
+  Signupscreen({super.key}) {
+    Get.put(AuthscreenController());
+  }
   final _formKey = GlobalKey<FormState>();
   Widget space = SizedBox(height: Responsive.h(5));
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  @override
-  final  controller = Get.put(AuthscreenController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: _buildBoy());
@@ -120,7 +122,7 @@ class Signupscreen extends GetView<AuthscreenController> {
                           if (_formKey.currentState!.validate()) {
                             controller.signup(
                               emailController.text,
-                              passwordController.text
+                              passwordController.text,
                             );
                           } else {
                             Get.snackbar(
