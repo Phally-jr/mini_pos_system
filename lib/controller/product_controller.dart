@@ -6,6 +6,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 class ProductController extends GetxController {
   final supabase = Supabase.instance.client;
   final products = <Product>[].obs;
+  List<Product> get lowStockProducts {
+  return products.where((product) => product.pQty <= 5).toList();
+}
   final isLoading = false.obs;
   @override
   void onInit() {
@@ -77,6 +80,7 @@ class ProductController extends GetxController {
       'pname': name,
       'pprice': price,
       'pqty': qty,
+      
     });
   }
 

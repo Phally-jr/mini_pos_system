@@ -7,7 +7,7 @@ class EditProductScreen extends StatelessWidget {
   Product product;
   EditProductScreen({super.key, required this.product});
 
-  final ProductController controller = Get.find<ProductController>();
+  final ProductController controller = Get.put(ProductController());
 
   final nameController = TextEditingController();
   final priceController = TextEditingController();
@@ -21,7 +21,9 @@ class EditProductScreen extends StatelessWidget {
     qtyController.text = product.pQty.toString();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Edit Product')),
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+        title: const Text('Edit Product')),
 
       body: Padding(
         padding: const EdgeInsets.all(16),

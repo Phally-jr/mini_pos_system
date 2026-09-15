@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mini_pos_system/config/routes/app_route.dart';
 import 'package:mini_pos_system/controller/auth_controller.dart';
+import 'package:mini_pos_system/screen/widget/lowstockwidget.dart';
 import 'package:mini_pos_system/screen/widget/nameshop_widget.dart';
 import 'package:mini_pos_system/screen/widget/recentsale_widget.dart';
 import 'package:mini_pos_system/screen/widget/todaysale_widget.dart';
-import '../widget/card_widget.dart';
+import 'package:mini_pos_system/screen/widget/lowstockwidget.dart';
 
 class HomescreenWidget extends StatelessWidget {
   var controller = Get.put(AuthscreenController());
@@ -18,19 +19,19 @@ class HomescreenWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildBody() {return Column(
-          children: [
-            SizedBox(height: 80),
-            InkWell(child: NameshopWidget(),onTap: () => Get.toNamed(AppRoute.changename),),
-            SizedBox(height: 15),
-            TodaysaleWidget(),
-            SizedBox(height: 15),
-            RecentsaleWidget(),
-            Expanded(child: CardWidget())
-          ]
-      
-          
-        );
-    }
-  }
+  Widget _buildBody() {
+    return ListView(
+      scrollDirection: Axis.vertical,
+      children: [
+        InkWell(
+          child: NameshopWidget(),
+          onTap: () => Get.toNamed(AppRoute.changename),
+        ),
 
+        TodaysaleWidget(),
+        InkWell(child: RecentsaleWidget(),onTap: ()=>Get.toNamed(AppRoute.saleHistory),),
+        LowStockWidget()
+      ],
+    );
+  }
+}

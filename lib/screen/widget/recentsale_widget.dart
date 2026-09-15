@@ -7,10 +7,10 @@ class RecentsaleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
+      padding: const EdgeInsets.all(8),
+      child:Container(
+        width:double.infinity,
+        decoration:BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: const Color.fromARGB(255, 1, 0, 0).withValues(alpha: 0.2),
@@ -19,31 +19,77 @@ class RecentsaleWidget extends StatelessWidget {
               offset: Offset(0, 3), // changes position of shadow
             ),
           ],
-          borderRadius: BorderRadius.circular(20),
-          color: const Color.fromARGB(255, 255, 250, 250),
         ),
-        height: Responsive.h(25), // previously 200
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  "Recent sales ",
-                  style: TextStyle(
-                    color: const Color.fromARGB(255, 0, 0, 0),
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+      
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+
+        children: [
+          const Text(
+            "Recent Sales",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        
+          const SizedBox(height: 15),
+        
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const CircleAvatar(
+              child: Icon(Icons.shopping_cart),
+            ),
+            title: const Text("Coca Cola"),
+            subtitle: const Text("2 items • Today"),
+            trailing: const Text(
+              "\$3.00",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
+          ),
+        
+          const Divider(),
+        
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const CircleAvatar(
+              child: Icon(Icons.shopping_cart),
+            ),
+            title: const Text("Pepsi"),
+            subtitle: const Text("1 item • Today"),
+            trailing: const Text(
+              "\$1.50",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        
+          const Divider(),
+        
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const CircleAvatar(
+              child: Icon(Icons.shopping_cart),
+            ),
+            title: const Text("Water"),
+            subtitle: const Text("3 items • Today"),
+            trailing: const Text(
+              "\$3.00",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+            ),
+          ),
         ),
-      ),
-    );
+      ));
   }
 }

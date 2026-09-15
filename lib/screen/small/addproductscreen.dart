@@ -6,7 +6,6 @@ class AddProductScreen extends GetView<ProductController> {
   AddProductScreen({super.key});
 
   final _formKey = GlobalKey<FormState>();
-
   final nameController = TextEditingController();
   final priceController = TextEditingController();
   final qtyController = TextEditingController();
@@ -51,7 +50,6 @@ class AddProductScreen extends GetView<ProductController> {
         title: const Text('Add Product'),
         backgroundColor: Colors.indigo,
       ),
-
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Form(
